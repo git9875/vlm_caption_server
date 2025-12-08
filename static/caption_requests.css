@@ -1,0 +1,11 @@
+table { display:table; }
+table:not(.horizontal) thead { position:inherit; }
+label { vertical-align:top; }
+#caption-request-form, #progress-container, #results-table { display:none; }
+#directory { width:80vw; }
+#append_prompt { width:40vw; }
+#progress-container { margin:2rem; }
+#results-table-body tr td:first-child, #results-table-body tr th:first-child { flex: 0 0 25vw; }
+#results-table-body tr td:nth-child(2), #results-table-body tr th:nth-child(2) { flex: 0 0 5vw; }
+#results-table-body tr td:first-child { font-weight:bold; }
+#results-table-body tr td:nth-child(2) { font-style:italic; }

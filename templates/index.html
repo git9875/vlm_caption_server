@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en-us">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VLM to Caption Images in Directory</title>
+    <link rel="stylesheet" href="/static/mini-default.min.css" />
+    <link rel="stylesheet" href="/static/caption_requests.css" />
+</head>
+
+<body>
+
+    <h1>VLM to Caption Images in Directory</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th colspan="2"><h2>Select model to load:</h2></th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for model, description in available_models.items() %}
+            <tr>
+                <td><input type="radio" name="model" value="{{ model }}" id="model-{{ model }}" /> <label for="model-{{ model }}">{{ model }}</label></td>
+                <td><label for="model-{{ model }}">{{ description }}</label></td>
+            </tr>
+            {% endfor %}
+        </tbody>
+        <tfoot>
+            <tr>
+                <td>
+                    <button type="button" id="load-model" class="button">Load Model</button>
+                </td>
+                <td>
+                    <button type="button" id="stop-model" class="button">Stop Model</button>
+                </td>
+            </tr>
+            <tr>
+                <td colspan="2">
+                    <div id="model-message"></div>
+                </td>
+            </tr>
+        </tfoot>
+    </table>
+
+
+    <form id="caption-request-form">
+
+        <div class="form-group">
+            <label for="directory">Dataset Directory:</label>
+            <input type="text" id="directory" name="directory" required></textarea>
+        </div>
+
+        <div class="form-group">
+            <table>
+                <thead>
+                    <tr>
+                        <th colspan="2"><h2>Select prompt</h2></th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for prompt, description in available_prompts.items() %}
+                    <tr>
+                        <td><input type="radio" name="prompt" value="{{ prompt }}" id="prompt-{{ prompt }}" /> <label for="prompt-{{ prompt }}">{{ prompt }}</label></td>
+                        <td><label for="prompt-{{ prompt }}">{{ description }}</label></td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+
+        <div class="form-group">
+            <label for="append_prompt">Optional additional prompt:</label>
+            <textarea id="append_prompt" name="append_prompt" rows="4"></textarea>
+        </div>
+        <button type="submit" class="button">Start Captioning</button>
+    </form>
+
+    <div class="progress-container" id="progress-container">
+        <div id="progress-bar" class="progress-bar"></div>
+        <div id="progress-text" class="progress-text">0 of 0 files processed</div>
+        <div id="progress-extra" class="progress-extra">0 captioned, 0 errors</div>
+    </div>
+
+    <table id="results-table">
+        <thead>
+            <tr>
+                <th>File</th>
+                <th>Status</th>
+                <th>Caption</th>
+            </tr>
+        </thead>
+        <tbody id="results-table-body"></tbody>
+    </table>
+
+    <script src="/static/caption_requests.js"></script>
+</body>
+</html>
