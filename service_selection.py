@@ -23,6 +23,12 @@ available_service_models = {
         specific_model_name="ducviet00/Florence-2-base-hf",
         description="Local ducviet00/Florence-2-base-hf using Huggingface transformers. This is a fork of microsoft/Florence-2-base-ft that is currently working."
     ),
+    "MiniCPM-V-2.6-8b-Ollama":available_service_model(
+        name="MiniCPM-V 2.6 Ollama",
+        module_path="services.local_ollama",
+        specific_model_name="minicpm-v:8b",
+        description="Mini-CPM-V-2.6 8B using local Ollama server."
+    ),
 }
 
 

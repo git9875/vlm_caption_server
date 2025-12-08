@@ -12,6 +12,7 @@ Caption all the images in a directory with downloaded Vision Language Models (VL
 
 ## Models Currently Included
 - [Qwen3-VLM-8B](https://ollama.com/library/qwen3-vl) available through Ollama.
+- [MiniCPM-V 2.6](https://ollama.com/library/minicpm-v) available through Ollama.
 - [Florence-2-base](https://huggingface.co/microsoft/Florence-2-base-ft), but [fixed](https://github.com/huggingface/transformers/issues/39974#issuecomment-3251539207) with transformers using [David Littlefield's models that have identical weights](https://huggingface.co/ducviet00/Florence-2-base-hf), just converted for native support. Note that although Florence-2 does a job at describing images in detail, it does poorly at "tagging" with the `<OD>` task prompt. `local_florence2.py` includes a prompt translation from the coded task prompts, [see the original examples here](https://huggingface.co/microsoft/Florence-2-large/blob/main/sample_inference.ipynb).
 
 ## Installation
@@ -83,7 +84,8 @@ You are free to use, modify, and distribute with minimal restriction.
 
 ## Acknowledgements
 - AI Code Assist was used in VS Code, presumably through Copilot. It did an amazing job offering suggestions and completing code.
-- [Qwen team at Alibaba Cloud](https://qwen.ai/blog?id=99f0335c4ad9ff6153e517418d48535ab6d8afef&from=research.latest-advancements-list)
+- [Qwen team at Alibaba Cloud](https://qwen.ai/blog?id=99f0335c4ad9ff6153e517418d48535ab6d8afef&from=research.latest-advancements-list) for providing the Qwen-VL series of vision language models.
+- [MiniCPM-V Team, OpenBMB](https://huggingface.co/openbmb/MiniCPM-V-2_6) for providing the MiniCPM-V-2.6 vision language model used in this project.
 - [Microsoft](https://www.microsoft.com/) for providing the Florence-2-base-ft vision language model used in this project.
 - [David Littlefield](https://huggingface.co/ducviet00/Florence-2-base-hf) for providing the fix/fork for Florence-2-base.
 - [Ollama](https://ollama.com/) for providing the locally-run vision language model used in this project.
