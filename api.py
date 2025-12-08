@@ -104,9 +104,9 @@ async def caption_directory(request: CaptionDirectoryRequest, background_tasks: 
         caption_job = caption_directory_job(files)
 
         def process_files():
-            if caption_job is None:
-                raise HTTPException(status_code=409, detail="No captioning job is in progress")
             for file in files:
+                if caption_job is None:
+                    raise HTTPException(status_code=409, detail="No captioning job is in progress")
                 file_path = os.path.join(request.directory, file)
                 caption_job.update_file_status(file, "Processing", '')
                 try:
