@@ -13,13 +13,13 @@ selected_service_model = None
 available_service_models = {
     "Qwen3-VLM-8B-Ollama":available_service_model(
         name="Qwen3-VLM-8B-Ollama",
-        module_path="vlm_caption_server.services.local_ollama",
+        module_path="services.local_ollama",
         specific_model_name="qwen3-vl:8b",
         description="Qwen3-VLM-8B using local Ollama server."
     ),
     "microsoft/Florence-2-base-ft":available_service_model(
         name="microsoft/Florence-2-base-ft",
-        module_path="vlm_caption_server.services.local_florence2",
+        module_path="services.local_florence2",
         specific_model_name="ducviet00/Florence-2-base-hf",
         description="Local ducviet00/Florence-2-base-hf using Huggingface transformers. This is a fork of microsoft/Florence-2-base-ft that is currently working."
     ),

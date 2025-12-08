@@ -6,10 +6,13 @@ Microsoft's Florence-2 is currently broken or incompatible with the latest trans
 This uses david-littlefield's fix/fork from:  https://github.com/huggingface/transformers/issues/39974#issuecomment-3251539207
 https://huggingface.co/ducviet00/Florence-2-base-hf
 '''
-from ..classes import model_service_abstract
 from PIL import Image
 from transformers import Florence2Processor, Florence2ForConditionalGeneration
 import torch
+
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from classes import model_service_abstract
 
 
 class model_service(model_service_abstract):

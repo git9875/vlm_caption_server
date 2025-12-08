@@ -1,7 +1,11 @@
-from ..classes import model_service_abstract
 from ollama import chat
 from ollama import ChatResponse
 import ollama
+
+import sys, os
+sys.path.append(os.path.abspath(os.path.join(os.path.dirname(__file__), '..')))
+from classes import model_service_abstract
+
 
 class model_service(model_service_abstract):
     service = None
