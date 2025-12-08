@@ -64,7 +64,7 @@ Caption all the images in a directory with downloaded Vision Language Models (VL
    ```
 
 Screenshot of the web UI:
-![Web UI Example](https://example.com/images/sunset.jpg)
+![Web UI Example](webui_tag_example.png)
 
 ## To customize it for other models, you can add new service class, or modify existing ones
 - Edit `service_selection.py` to modify available models. Prompts can also be modified.
