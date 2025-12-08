@@ -2,7 +2,7 @@
 Image directory captioning system using VLMs. Run on command line or FastAPI which includes a web interface. Useful for creating image datasets used to train a LoRA.
 
 ## Overview
-Caption all the images in a directory with downloaded Vision Language Models (VLMs) by using a command line tool or local web service. A simple web UI is included.
+Caption all the images in a directory with downloaded Vision Language Models (VLMs) by using a command line tool or local web service. A simple web UI is included. Caption text files are saved in the same directory as the images, with the same name but with a .txt extension.
 
 ## Features
 - **Model Selection**: Choose from available VLM models
@@ -62,6 +62,9 @@ Caption all the images in a directory with downloaded Vision Language Models (VL
    # To view the available models and prompts, simply run:
    python program.py
    ```
+
+Screenshot of the web UI:
+![Web UI Example](https://example.com/images/sunset.jpg)
 
 ## To customize it for other models, you can add new service class, or modify existing ones
 - Edit `service_selection.py` to modify available models. Prompts can also be modified.
