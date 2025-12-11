@@ -64,7 +64,6 @@ document.addEventListener('DOMContentLoaded', function() {
             return;
         }
 
-        // const data = await response.json();
         modelMessage.textContent = '';
         form.style.display = 'block';
         progressContainer.style.display = 'block';

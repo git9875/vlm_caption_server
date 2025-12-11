@@ -1,7 +1,6 @@
 table { display:table; }
 table:not(.horizontal) thead { position:inherit; }
 #model-services-table label input+span.checkable { display:ruby-text; margin-top:1rem; }
-/* label { vertical-align:top; } */
 #caption-request-form, #progress-container, #results-table { display:none; }
 #caption-request-form, #data-dir-row, #results-table { margin:1.5rem; }
 #directory { width:80vw; }

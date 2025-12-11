@@ -1,5 +1,6 @@
 # VLM Image Caption Server
 Image directory captioning system using VLMs. Run on command line or FastAPI which includes a web interface. Useful for creating image datasets used to train a LoRA.
+This project is used by the [Dataset Dedupe project](https://github.com/git9875/dataset_dedupe) for AI Captioning.
 
 ## Overview
 Caption all the images in a directory with downloaded Vision Language Models (VLMs) by using a command line tool or local web service. A simple web UI is included. Caption text files are saved in the same directory as the images, with the same name but with a .txt extension.
@@ -77,6 +78,8 @@ For more in depth usage details, read the [documentation.md](documentation.md) p
 - In `services` directory, you can add a new service class according to the `model_service_abstract` class in `classes.py`.
 
 Regarding Microsoft's Florence-2-base-ft vision language model, it is currently broken or incompatible with the latest transformers library. This uses [david-littlefield's fix/fork](https://github.com/huggingface/transformers/issues/39974#issuecomment-3251539207).
+
+-----
 
 ## Contributing
 I am open to suggestions and feedback. If there is a locally-run VLM that is great at captioning images or videos, I may want to include it in this project in the future.
