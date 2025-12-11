@@ -1,7 +1,9 @@
 table { display:table; }
 table:not(.horizontal) thead { position:inherit; }
-label { vertical-align:top; }
+#model-services-table label input+span.checkable { display:ruby-text; margin-top:1rem; }
+/* label { vertical-align:top; } */
 #caption-request-form, #progress-container, #results-table { display:none; }
+#caption-request-form, #data-dir-row, #results-table { margin:1.5rem; }
 #directory { width:80vw; }
 #append_prompt { width:40vw; }
 #progress-container { margin:2rem; }
@@ -9,3 +11,4 @@ label { vertical-align:top; }
 #results-table-body tr td:nth-child(2), #results-table-body tr th:nth-child(2) { flex: 0 0 5vw; }
 #results-table-body tr td:first-child { font-weight:bold; }
 #results-table-body tr td:nth-child(2) { font-style:italic; }
+#preview-only-container { padding-top:0.5rem; }

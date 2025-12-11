@@ -7,16 +7,18 @@ The server starts a caption job process.
 The JavaScript will poll periodically poll the server for the job status and update the UI accordingly.
 */
 document.addEventListener('DOMContentLoaded', function() {
-    const loadModelBtn = document.getElementById('load-model');
-    const stopModelBtn = document.getElementById('stop-model');
-    const modelMessage = document.getElementById('model-message');
-    const form = document.getElementById('caption-request-form');
-    const progressContainer = document.getElementById('progress-container');
-    const progressBar = document.getElementById('progress-bar');
-    const progressText = document.getElementById('progress-text');
-    const progressExtra = document.getElementById('progress-extra');
-    const resultsTable = document.getElementById('results-table');
-    const resultsTableBody = document.getElementById('results-table-body');
+    const getElId = document.getElementById.bind(document);
+    const loadModelBtn = getElId('load-model');
+    const stopModelBtn = getElId('stop-model');
+    const startCaptioningBtn = getElId('start-captioning-btn');
+    const modelMessage = getElId('model-message');
+    const form = getElId('caption-request-form');
+    const progressContainer = getElId('progress-container');
+    const progressBar = getElId('progress-bar');
+    const progressText = getElId('progress-text');
+    const progressExtra = getElId('progress-extra');
+    const resultsTable = getElId('results-table');
+    const resultsTableBody = getElId('results-table-body');
     let timerId = null;
 
     loadModelBtn.addEventListener('click', async function() {
@@ -79,21 +81,46 @@ document.addEventListener('DOMContentLoaded', function() {
     });
 
 
-    form.addEventListener('submit', async function(e) {
+    startCaptioningBtn.addEventListener('click', async function(e) {
         e.preventDefault();
 
-        const formData = new FormData(form);
-        const formObject = Object.fromEntries(formData.entries());
+        const directoryInput = getElId('directory').value;
+        const promptCheckbox = document.querySelector('input[name="prompt"]:checked');
+
+        if (!directoryInput) {
+            alert('Please enter a directory path');
+            getElId('directory').focus();
+            return;
+        }
+
+        if (!promptCheckbox) {
+            alert('Please select a prompt');
+            return;
+        }
+
+        const body = JSON.stringify({
+            directory: directoryInput,
+            prompt: promptCheckbox.value,
+            append_prompt: getElId('append_prompt').value,
+            previewDoNotUpdate: getElId('preview-only').checked
+        });
+
         const response = await fetch('/caption_directory', {
             method: 'POST',
             headers: {
                 'Content-Type': 'application/json',
             },
-            body: JSON.stringify(formObject)
+            body: body
         });
 
         const data = await response.json();
-        progressBar.style.width = `0%`;
+        if (!response.ok) {
+            alert(`Error: ${data.detail[0].msg}`);
+            return;
+        }
+
+        progressBar.value = 0;
+        progressBar.text = '0%';
         progressText.textContent = `0 of 0 files processed`;
         progressExtra.textContent = `0 captioned, 0 errors; ` + data.message;
         resultsTableBody.innerHTML = '';
@@ -104,7 +131,7 @@ document.addEventListener('DOMContentLoaded', function() {
             resultsTableBody.appendChild(row);
         }
 
-        timerId = setInterval(pollJobStatus, 10000);
+        timerId = setInterval(pollJobStatus, 5000);
     });
 
     async function pollJobStatus() {
@@ -122,7 +149,8 @@ document.addEventListener('DOMContentLoaded', function() {
         }
 
         const progress = (data.processed_files / data.total_files) * 100;
-        progressBar.style.width = `${progress}%`;
+        progressBar.value = progress;
+        progressBar.text = `${progress}%`;
         progressText.textContent = `${data.processed_files} of ${data.total_files} files processed`;
         progressExtra.textContent = `${data.captioned_files} captioned, ${data.error_count} errors`;
 
