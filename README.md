@@ -64,8 +64,12 @@ Caption all the images in a directory with downloaded Vision Language Models (VL
    python program.py
    ```
 
-Screenshot of the web UI:
-![Web UI Example](webui_tag_example.png)
+For more in depth usage details, read the [documentation.md](documentation.md) page.
+
+| FastAPI Swagger UI Screenshot | Web UI Screenshot |
+| --- | --- |
+| ![FastAPI Swagger UI Screenshot](static/screenshots/swaggerui_docs.png)    | ![Web UI Screenshot](static/screenshots/webui.png) |
+
 
 ## To customize it for other models, you can add new service class, or modify existing ones
 - Edit `service_selection.py` to modify available models. Prompts can also be modified.
@@ -83,10 +87,10 @@ This project is licensed under the [Apache 2.0 License](https://www.apache.org/l
 You are free to use, modify, and distribute with minimal restriction.
 
 ## Acknowledgements
-- AI Code Assist was used in VS Code, presumably through Copilot. It did an amazing job offering suggestions and completing code.
 - [Qwen team at Alibaba Cloud](https://qwen.ai/blog?id=99f0335c4ad9ff6153e517418d48535ab6d8afef&from=research.latest-advancements-list) for providing the Qwen-VL series of vision language models.
 - [MiniCPM-V Team, OpenBMB](https://huggingface.co/openbmb/MiniCPM-V-2_6) for providing the MiniCPM-V-2.6 vision language model used in this project.
 - [Microsoft](https://www.microsoft.com/) for providing the Florence-2-base-ft vision language model used in this project.
 - [David Littlefield](https://huggingface.co/ducviet00/Florence-2-base-hf) for providing the fix/fork for Florence-2-base.
 - [Ollama](https://ollama.com/) for providing the locally-run vision language model used in this project.
 - [Hugging Face](https://huggingface.co/) for providing the transformers library used in this project.
+- AI Code Assist was used in VS Code, presumably through Copilot. It did an amazing job offering suggestions and completing code.
