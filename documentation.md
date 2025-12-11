@@ -49,6 +49,7 @@ This will start the FastAPI server on port 8000. You can then access the web int
 To can view the Swagger UI generated documentation at `http://localhost:8000/docs` and you can also test the endpoints of the API.
 
 FastAPI Swagger UI Docs Screenshot:
+
 ![Swagger UI Docs Screenshot](static/screenshots/swaggerui_docs.png)
 
 
