@@ -4,24 +4,24 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>VLM to Caption Images in Directory</title>
-    <link rel="stylesheet" href="/static/mini-default.min.css" />
-    <link rel="stylesheet" href="/static/caption_requests.css" />
+    <link rel="stylesheet" href="/static/css/picnic.min.css" />
+    <link rel="stylesheet" href="/static/css/caption_requests.css" />
 </head>
 
 <body>
 
-    <h1>VLM to Caption Images in Directory</h1>
+    <h1>Caption Images in Directory with VLM</h1>
 
-    <table>
+    <table id="model-services-table">
         <thead>
             <tr>
-                <th colspan="2"><h2>Select model to load:</h2></th>
+                <th colspan="2"><h3>Select model to load:</h3></th>
             </tr>
         </thead>
         <tbody>
             {% for model, description in available_models.items() %}
             <tr>
-                <td><input type="radio" name="model" value="{{ model }}" id="model-{{ model }}" /> <label for="model-{{ model }}">{{ model }}</label></td>
+                <td><label><input type="radio" name="model" value="{{ model }}" id="model-{{ model }}" /> <span class="checkable">{{ model }}</span></label></td>
                 <td><label for="model-{{ model }}">{{ description }}</label></td>
             </tr>
             {% endfor %}
@@ -29,10 +29,10 @@
         <tfoot>
             <tr>
                 <td>
-                    <button type="button" id="load-model" class="button">Load Model</button>
+                    <button type="button" id="load-model" class="button success">Load Model</button>
                 </td>
                 <td>
-                    <button type="button" id="stop-model" class="button">Stop Model</button>
+                    <button type="button" id="stop-model" class="button error">Stop Model</button>
                 </td>
             </tr>
             <tr>
@@ -46,7 +46,7 @@
 
     <form id="caption-request-form">
 
-        <div class="form-group">
+        <div id="data-dir-row">
             <label for="directory">Dataset Directory:</label>
             <input type="text" id="directory" name="directory" required></textarea>
         </div>
@@ -61,7 +61,7 @@
                 <tbody>
                     {% for prompt, description in available_prompts.items() %}
                     <tr>
-                        <td><input type="radio" name="prompt" value="{{ prompt }}" id="prompt-{{ prompt }}" /> <label for="prompt-{{ prompt }}">{{ prompt }}</label></td>
+                        <td><label><input required type="radio" name="prompt" value="{{ prompt }}" id="prompt-{{ prompt }}" /> <span class="checkable">{{ prompt }}</span></label></td>
                         <td><label for="prompt-{{ prompt }}">{{ description }}</label></td>
                     </tr>
                     {% endfor %}
@@ -69,15 +69,18 @@
             </table>
         </div>
 
-        <div class="form-group">
+        <div class="flex five">
             <label for="append_prompt">Optional additional prompt:</label>
             <textarea id="append_prompt" name="append_prompt" rows="4"></textarea>
         </div>
-        <button type="submit" class="button">Start Captioning</button>
+        <div class="flex four">
+            <div class="fourth"><button id="start-captioning-btn" type="button" class="button success">Start Captioning</button></div>
+            <div class="three-fourth" id="preview-only-container"><label><input type="checkbox" name="preview-only" id="preview-only" value="1" /> <span class="checkable">Preview Only: will not update caption files</span></label></div>
+        </div>
     </form>
 
     <div class="progress-container" id="progress-container">
-        <div id="progress-bar" class="progress-bar"></div>
+        <progress id="progress-bar" value="0" max="100">0%</progress>
         <div id="progress-text" class="progress-text">0 of 0 files processed</div>
         <div id="progress-extra" class="progress-extra">0 captioned, 0 errors</div>
     </div>
