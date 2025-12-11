@@ -33,7 +33,7 @@ available_service_models = {
 
 
 available_prompts = {
-    "detailed": "Describe the image in detail in one paragraph.",
+    "detailed": "Describe the image in detail in one paragraph. Response should be text only without Markdown.",
     "short": "Provide a brief description of the image within 40 words or less.",
     "tags": "Provide a comma delimited list of tags that describe the image in order of relevance.",
 }

@@ -34,9 +34,9 @@ parser.add_argument('--prompt', type=str, required=True, help='Prompt to use for
 parser.add_argument('--append_prompt', type=str, help='Optional additional prompt to append')
 
 if len(sys.argv) == 1:
-    show_models_and_prompts()
-    print('')
     parser.print_help(sys.stderr)
+    print('')
+    show_models_and_prompts()
     sys.exit(1)
 
 args = parser.parse_args()
