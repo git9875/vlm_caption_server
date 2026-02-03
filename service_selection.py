@@ -32,7 +32,7 @@ available_service_models = {
     "Youtu-VL-4B-Ollama":available_service_model(
         name="Youtu-VL-4B-Ollama",
         module_path="services.local_ollama",
-        specific_model_name="youtu-vl:4b",
+        specific_model_name="youtu/youtu-vl",
         description="Youtu-VL-4B using local Ollama server."
     ),
 }
